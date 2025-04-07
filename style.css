@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0e0e0e;
+    color: #f2f2f2;
+  }
+  
+  header {
+    background-color: #013220;
+    padding: 2rem;
+    text-align: center;
+    color: #d6f5d6;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #bc6ff1;
+  }
+  
+  .listings {
+    padding: 2rem;
+  }
+  
+  .card {
+    background-color: #1e1e1e;
+    border: 1px solid #bc6ff1;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #013220;
+    color: #aaa;
+  }
+  
