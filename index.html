@@ -1,33 +1,734 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Mo8ara - Game Account Marketplace</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>Mo8ara</h1>
-    <p>The Tunisian marketplace to buy & sell game accounts</p>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mo8ara | Futuristic Gaming Marketplace</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --cyber-blue: #00f7ff;
+        --neon-pink: #ff00f7;
+        --deep-purple: #6a00ff;
+        --matrix-green: #00ff57;
+        --dark-space: #0a0a1a;
+        --void-black: #000022;
+      }
 
-  <section class="listings">
-    <h2>Available Accounts</h2>
-    <div class="card">
-      <h3>Fortnite Account</h3>
-      <p>Includes 150 skins - Price: 120 TND</p>
-      <p>Contact: +216 55 123 456</p>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Orbitron", "Rajdhani", sans-serif;
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap");
+
+      body {
+        background-color: var(--void-black);
+        color: white;
+        overflow-x: hidden;
+        background-image: radial-gradient(
+            circle at 20% 30%,
+            rgba(0, 247, 255, 0.05) 0%,
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 0, 247, 0.05) 0%,
+            transparent 25%
+          );
+      }
+
+      /* Cyber Glow Effects */
+      .cyber-glow {
+        text-shadow: 0 0 10px currentColor;
+      }
+
+      /* Header */
+      header {
+        background: linear-gradient(
+          145deg,
+          var(--void-black),
+          var(--dark-space)
+        );
+        padding: 1.5rem 3rem;
+        border-bottom: 1px solid var(--cyber-blue);
+        box-shadow: 0 0 25px rgba(0, 247, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--neon-pink),
+          transparent
+        );
+      }
+
+      .logo {
+        font-size: 2.5rem;
+        font-weight: 800;
+        font-family: "Orbitron", sans-serif;
+        background: linear-gradient(45deg, var(--cyber-blue), var(--neon-pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 2px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .logo::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--cyber-blue), var(--neon-pink));
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover::after {
+        transform: scaleX(1);
+      }
+
+      .logo span {
+        color: var(--matrix-green);
+        text-shadow: 0 0 15px var(--matrix-green);
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 5rem 1rem;
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            45deg,
+            transparent 65%,
+            rgba(106, 0, 255, 0.1) 100%
+          ),
+          radial-gradient(
+            circle at 75% 25%,
+            rgba(0, 247, 255, 0.05) 0%,
+            transparent 30%
+          );
+        z-index: -1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        font-family: "Orbitron", sans-serif;
+        background: linear-gradient(
+          45deg,
+          var(--cyber-blue),
+          var(--neon-pink),
+          var(--matrix-green)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 3px;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 3rem;
+        opacity: 0.9;
+        font-family: "Rajdhani", sans-serif;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .cta-button {
+        background: transparent;
+        color: white;
+        border: 2px solid var(--cyber-blue);
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+        border-radius: 0;
+        cursor: pointer;
+        transition: all 0.4s;
+        text-decoration: none;
+        display: inline-block;
+        margin: 0.8rem;
+        font-family: "Orbitron", sans-serif;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--cyber-blue),
+          transparent
+        );
+        transition: all 0.6s;
+        z-index: -1;
+      }
+
+      .cta-button:hover {
+        color: var(--void-black);
+        box-shadow: 0 0 25px rgba(0, 247, 255, 0.5);
+      }
+
+      .cta-button:hover::before {
+        left: 100%;
+      }
+
+      .cta-button.primary {
+        background: var(--deep-purple);
+        border-color: var(--deep-purple);
+      }
+
+      .cta-button.primary::before {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--neon-pink),
+          transparent
+        );
+      }
+
+      /* Geometric Shapes */
+      .geometric-shape {
+        position: absolute;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .shape-1 {
+        top: 20%;
+        left: 10%;
+        width: 100px;
+        height: 100px;
+        border: 3px solid var(--cyber-blue);
+        transform: rotate(45deg);
+      }
+
+      .shape-2 {
+        bottom: 15%;
+        right: 10%;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 3px dashed var(--neon-pink);
+        animation: rotate 30s linear infinite;
+      }
+
+      .shape-3 {
+        top: 40%;
+        right: 20%;
+        width: 80px;
+        height: 80px;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        background: var(--matrix-green);
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Filters */
+      .filters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding: 2rem;
+        background-color: rgba(10, 10, 26, 0.7);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 247, 255, 0.2);
+        position: relative;
+      }
+
+      .filters::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--matrix-green),
+          transparent
+        );
+      }
+
+      .filter-select {
+        padding: 0.8rem 1.5rem;
+        border-radius: 0;
+        border: 1px solid var(--deep-purple);
+        background-color: transparent;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 600;
+        letter-spacing: 1px;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1rem;
+      }
+
+      .filter-select:hover {
+        background-color: rgba(106, 0, 255, 0.2);
+        border-color: var(--neon-pink);
+      }
+
+      /* Listings Grid */
+      .listings {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 3rem;
+        padding: 3rem;
+        position: relative;
+      }
+
+      .listing-card {
+        background: rgba(10, 10, 26, 0.6);
+        border-radius: 0;
+        overflow: hidden;
+        border: 1px solid rgba(0, 247, 255, 0.2);
+        transition: all 0.4s;
+        position: relative;
+        backdrop-filter: blur(5px);
+      }
+
+      .listing-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 247, 255, 0.05),
+          rgba(255, 0, 247, 0.05)
+        );
+        z-index: -1;
+      }
+
+      .listing-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--neon-pink);
+        box-shadow: 0 10px 30px rgba(255, 0, 247, 0.3);
+      }
+
+      .listing-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .listing-image::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--cyber-blue), var(--neon-pink));
+      }
+
+      .listing-details {
+        padding: 2rem;
+      }
+
+      .game-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+        color: white;
+        font-family: "Orbitron", sans-serif;
+        letter-spacing: 1px;
+      }
+
+      .platform {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        background-color: rgba(106, 0, 255, 0.3);
+        border-radius: 0;
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem;
+        color: var(--cyber-blue);
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 600;
+        border-left: 3px solid var(--cyber-blue);
+      }
+
+      .price {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 1.5rem 0;
+        color: var(--matrix-green);
+        font-family: "Orbitron", sans-serif;
+      }
+
+      .contact-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .whatsapp-btn,
+      .email-btn {
+        padding: 0.8rem 1.5rem;
+        border-radius: 0;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-decoration: none;
+        transition: all 0.3s;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 600;
+        flex: 1;
+        justify-content: center;
+        border: 1px solid transparent;
+      }
+
+      .whatsapp-btn {
+        background-color: rgba(37, 211, 102, 0.2);
+        color: #25d366;
+        border-color: #25d366;
+      }
+
+      .email-btn {
+        background-color: rgba(106, 0, 255, 0.2);
+        color: var(--deep-purple);
+        border-color: var(--deep-purple);
+      }
+
+      .whatsapp-btn:hover,
+      .email-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .whatsapp-btn:hover {
+        background-color: #25d366;
+        color: white;
+      }
+
+      .email-btn:hover {
+        background-color: var(--deep-purple);
+        color: white;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(
+          to top,
+          var(--void-black),
+          var(--dark-space)
+        );
+        border-top: 1px solid var(--deep-purple);
+        margin-top: 3rem;
+        position: relative;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--cyber-blue),
+          var(--neon-pink),
+          transparent
+        );
+      }
+
+      .logo-footer {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-slogan {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-family: "Rajdhani", sans-serif;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2.5rem 0;
+      }
+
+      .social-links a {
+        color: var(--cyber-blue);
+        font-size: 1.8rem;
+        transition: all 0.3s;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 247, 255, 0.3);
+        background: rgba(0, 247, 255, 0.05);
+      }
+
+      .social-links a:hover {
+        color: var(--neon-pink);
+        border-color: var(--neon-pink);
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 5px 20px rgba(255, 0, 247, 0.3);
+      }
+
+      .copyright {
+        margin-top: 2rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-family: "Rajdhani", sans-serif;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .hero h1 {
+          font-size: 3rem;
+        }
+
+        .listings {
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          padding: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .filters {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .listings {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          padding: 1.5rem;
+        }
+
+        .cta-button {
+          padding: 0.8rem 1.5rem;
+          font-size: 1rem;
+          margin: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">MO<span>8</span>ARA</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="geometric-shape shape-1"></div>
+      <div class="geometric-shape shape-2"></div>
+      <div class="geometric-shape shape-3"></div>
+
+      <div class="hero-content">
+        <h1>NEXT-GEN GAMING MARKETPLACE</h1>
+        <p>
+          Trade elite gaming accounts with zero friction. Powered by blockchain
+          security and instant escrow for peace of mind.
+        </p>
+        <div>
+          <a href="#listings" class="cta-button">EXPLORE LISTINGS</a>
+          <a href="#" class="cta-button primary">SELL ACCOUNT</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <div class="filters">
+      <select class="filter-select">
+        <option value="all">ALL GAMES</option>
+        <option value="freefire">FREE FIRE</option>
+        <option value="fortnite">FORTNITE</option>
+        <option value="fifa">FIFA</option>
+        <option value="valorant">VALORANT</option>
+      </select>
+
+      <select class="filter-select">
+        <option value="all">ALL PLATFORMS</option>
+        <option value="mobile">MOBILE</option>
+        <option value="pc">PC</option>
+        <option value="ps">PLAYSTATION</option>
+        <option value="xbox">XBOX</option>
+      </select>
+
+      <select class="filter-select">
+        <option value="all">SORT BY</option>
+        <option value="price-low">PRICE: LOW TO HIGH</option>
+        <option value="price-high">PRICE: HIGH TO LOW</option>
+        <option value="newest">NEWEST</option>
+      </select>
     </div>
 
-    <div class="card">
-      <h3>Free Fire Account</h3>
-      <p>Level 65, rare skins - Price: 90 TND</p>
-      <p>Contact: mo8ara@email.com</p>
-    </div>
-  </section>
+    <!-- Listings Grid -->
+    <section id="listings" class="listings">
+      <!-- Listing 1 -->
+      <div class="listing-card">
+        <div
+          class="listing-image"
+          style="background-image: url('https://i.ibb.co/0jq6R0B/freefire.jpg')"
+        ></div>
+        <div class="listing-details">
+          <h3 class="game-title">FREE FIRE ELITE</h3>
+          <span class="platform">MOBILE</span>
+          <p>
+            Level 70 | 15 Legendary Skins | Kenta Character | Season 12 Veteran
+          </p>
+          <div class="price">120 TND</div>
+          <div class="contact-buttons">
+            <a href="https://wa.me/21612345678" class="whatsapp-btn">
+              <i class="fab fa-whatsapp"></i> WHATSAPP
+            </a>
+            <a href="mailto:seller@example.com" class="email-btn">
+              <i class="fas fa-envelope"></i> EMAIL
+            </a>
+          </div>
+        </div>
+      </div>
 
-  <footer>
-    <p>Made in Tunisia 🇹🇳 — Mo8ara © 2025</p>
-  </footer>
-</body>
+      <!-- Listing 2 -->
+      <div class="listing-card">
+        <div
+          class="listing-image"
+          style="background-image: url('https://i.ibb.co/4W2y3Pk/fifa23.jpg')"
+        ></div>
+        <div class="listing-details">
+          <h3 class="game-title">FIFA 23 ULTIMATE</h3>
+          <span class="platform">PS5</span>
+          <p>TOTY Mbappé | 2M Coins | Elite Division | All Icons Unlocked</p>
+          <div class="price">250 TND</div>
+          <div class="contact-buttons">
+            <a href="https://wa.me/21698765432" class="whatsapp-btn">
+              <i class="fab fa-whatsapp"></i> WHATSAPP
+            </a>
+            <a href="mailto:seller2@example.com" class="email-btn">
+              <i class="fas fa-envelope"></i> EMAIL
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Listing 3 -->
+      <div class="listing-card">
+        <div
+          class="listing-image"
+          style="background-image: url('https://i.ibb.co/7YtqB1Z/fortnite.jpg')"
+        ></div>
+        <div class="listing-details">
+          <h3 class="game-title">FORTNITE OG</h3>
+          <span class="platform">PC</span>
+          <p>100+ Skins | Black Knight | Renegade Raider | Mako Glider</p>
+          <div class="price">400 TND</div>
+          <div class="contact-buttons">
+            <a href="https://wa.me/21655667788" class="whatsapp-btn">
+              <i class="fab fa-whatsapp"></i> WHATSAPP
+            </a>
+            <a href="mailto:seller3@example.com" class="email-btn">
+              <i class="fas fa-envelope"></i> EMAIL
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="logo logo-footer">MO<span>8</span>ARA</div>
+      <p class="footer-slogan">
+        The future of gaming commerce is here. Trade with confidence in our
+        secure ecosystem.
+      </p>
+
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+      </div>
+
+      <p class="copyright">&copy; 2023 MO8ARA. ALL RIGHTS RESERVED.</p>
+    </footer>
+  </body>
 </html>
